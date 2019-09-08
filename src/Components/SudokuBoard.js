@@ -8,7 +8,7 @@ import {opponentSolvedTime} from '../Library/Sudoku'
 class SudokuBoard extends Component {
 
     render(){
-        const {puzzle, onChange, handleSolveClick} = this.props,
+        const {puzzle, onChange, handleSolveClick, hiddingSolveBtn} = this.props,
               isSolved = puzzle.solvedTime;
         
         return (
@@ -31,7 +31,8 @@ class SudokuBoard extends Component {
                     ))}
                 </div>
                 <br/>
-                <button onClick={handleSolveClick}>Solve it Magically!</button>
+                {!hiddingSolveBtn && <button onClick={handleSolveClick}>Solve it Magically!</button>}
+                
             </section>
         );
     }

@@ -71,6 +71,7 @@ class App extends Component{
             puzzle={this.state.sudokuPuzzle}
             onChange={this.handleChange}
             handleSolveClick={this.solveSudoku}
+            hiddingSolveBtn={true}
           />
         </main>
         <footer>

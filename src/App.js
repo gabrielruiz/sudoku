@@ -11,9 +11,12 @@ class App extends Component{
   }));
 
   handleChange = (e) => {
+    let valueStr = ((e.value && e.value.toString()) || ''),
+        value = (1 < valueStr.length) ? parseInt(valueStr[0]) : e.value;
+
     this.setState(
       Produce((state) => {
-        state.sudokuPuzzle.rows[e.row].cols[e.col].value = e.value;
+        state.sudokuPuzzle.rows[e.row].cols[e.col].value = value;
         state = this.handleSolving(state);
       })
     );
@@ -52,8 +55,6 @@ class App extends Component{
             let addCurrentYear = '',
                 currentYear = new Date().getFullYear();
             
-            console.log('Current Year:', currentYear);
-
             if(2019 !== currentYear) {
               addCurrentYear = '-' + currentYear;
             }

@@ -62,8 +62,8 @@ export function extractURLData() {
     let result = null;
     if(match) {
         result = JSON.parse(atob(match[1]));
+        console.log('Got from URL:', result);
     }
-    console.log('Got from URL:', result);
     return result;
 }
 
@@ -73,4 +73,53 @@ export function opponentSolvedTime(startTime, solvedTime) {
         ) : null;
     
     return endTime;
+}
+
+export function timeInHHMMSS(seconds) {
+    let time = '00:00:00';
+
+    const secToMilisecs  = 1000,
+          minToMilisecs  = 60 * secToMilisecs,
+          hourToMilisecs = 60 * minToMilisecs,
+          dayToMilisecs  = 24 * hourToMilisecs;
+
+    let timeInDays  = Math.floor(seconds  / dayToMilisecs),
+        timeInHours = Math.floor((seconds - timeInDays) / hourToMilisecs),
+        timeInMins  = Math.floor((seconds - timeInHours) / minToMilisecs),
+        timeInSecs  = Math.floor(seconds  - timeInMins);
+
+    const getInTime = (timeSecs, type) => {
+        let time = 0;
+
+        const aDay  = 24*60*60,
+              anHr = 60*60,
+              aMin = 60,
+              aSec = 60,
+              days  = Math.floor(timeSecs / aDay),
+              hours = Math.floor((timeSecs - days*anHr) / anHr),
+              mins  = Math.floor((timeSecs - hours*aMin) / aMin),
+              secs  = Math.floor(timeSecs - mins*aSec);
+        
+        switch(type) {
+            case 'days': time = days; break;
+            case 'hours': time = hours; break;
+            case 'mins': time = mins; break;
+            default: time = secs;
+        }
+
+        if(10 > time) {
+            time = '0' + time;
+        }
+
+        return time;
+    }
+
+    timeInDays = getInTime(timeInSecs, 'days');
+    timeInHours = getInTime(timeInSecs, 'hours');
+    timeInMins = getInTime(timeInSecs, 'mins');
+    timeInSecs = getInTime(timeInSecs);
+
+    time = ((timeInDays*1 && timeInDays + 'd ') || '') + timeInHours + ':' + timeInMins + ':' + timeInSecs;
+
+    return time;
 }

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {timeInHHMMSS} from '../Library/Sudoku';
 
 class SudokuTimer extends Component {
 
@@ -26,7 +27,7 @@ class SudokuTimer extends Component {
 
         return (
             <section className="sudoku-timer">
-                <h3>{isAChallenge ? 'Your Time': 'Time'}: {elapsed} seconds</h3>
+                <h3>{isAChallenge ? 'Your Time': 'Time'}: {timeInHHMMSS(elapsed)} seconds</h3>
             </section>
         );
     }

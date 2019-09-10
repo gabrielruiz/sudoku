@@ -1,0 +1,72 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.field {
+  border-style: outset;
+  color: #888;
+  font-size: 2rem;
+  text-align: center;
+  width: 3rem;
+  height: 3rem;
+}
+.field[readonly] {
+  color: #222;
+}
+
+.field:first-child {
+  border-left-color: #333; 
+}
+.field:nth-child(3n+0) {
+  border-right-color: #333; 
+}
+.row:first-child .field {
+  border-top-color: #333; 
+}
+.row:nth-child(3n+0) .field {
+  border-bottom-color: #333; 
+} 
+
+.sudoku-board {
+  margin: 2rem;
+}
+
+
+.sudoku-board.solved .field {
+  border-color: lightgreen;
+  border-style: solid;
+}
+.sudoku-board.solved .field:first-child {
+  border-left-color: green; 
+}
+.sudoku-board.solved .field:nth-child(3n+0) {
+  border-right-color: green; 
+}
+.sudoku-board.solved .row:first-child .field {
+  border-top-color: green;
+}
+.sudoku-board.solved .row:nth-child(3n+0) .field {
+  border-bottom-color: green; 
+}
+
+footer {
+  color: #777;
+}
+footer a {
+  color: #0000eec4;
+}

@@ -78,27 +78,16 @@ export function opponentSolvedTime(startTime, solvedTime) {
 export function timeInHHMMSS(seconds) {
     let time = '00:00:00';
 
-    const secToMilisecs  = 1000,
-          minToMilisecs  = 60 * secToMilisecs,
-          hourToMilisecs = 60 * minToMilisecs,
-          dayToMilisecs  = 24 * hourToMilisecs;
-
-    let timeInDays  = Math.floor(seconds  / dayToMilisecs),
-        timeInHours = Math.floor((seconds - timeInDays) / hourToMilisecs),
-        timeInMins  = Math.floor((seconds - timeInHours) / minToMilisecs),
-        timeInSecs  = Math.floor(seconds  - timeInMins);
-
     const getInTime = (timeSecs, type) => {
         let time = 0;
 
         const aDay  = 24*60*60,
               anHr = 60*60,
               aMin = 60,
-              aSec = 60,
               days  = Math.floor(timeSecs / aDay),
-              hours = Math.floor((timeSecs - days*anHr) / anHr),
-              mins  = Math.floor((timeSecs - hours*aMin) / aMin),
-              secs  = Math.floor(timeSecs - mins*aSec);
+              hours = Math.floor((timeSecs - days*aDay) / anHr),
+              mins  = Math.floor((timeSecs - hours*anHr) / aMin),
+              secs  = Math.floor(timeSecs - days*aDay - hours*anHr - mins*aMin);
         
         switch(type) {
             case 'days': time = days; break;
@@ -114,10 +103,10 @@ export function timeInHHMMSS(seconds) {
         return time;
     }
 
-    timeInDays = getInTime(timeInSecs, 'days');
-    timeInHours = getInTime(timeInSecs, 'hours');
-    timeInMins = getInTime(timeInSecs, 'mins');
-    timeInSecs = getInTime(timeInSecs);
+    let timeInDays = getInTime(seconds, 'days'),
+        timeInHours = getInTime(seconds, 'hours'),
+        timeInMins = getInTime(seconds, 'mins'),
+        timeInSecs = getInTime(seconds);
 
     time = ((timeInDays*1 && timeInDays + 'd ') || '') + timeInHours + ':' + timeInMins + ':' + timeInSecs;
 

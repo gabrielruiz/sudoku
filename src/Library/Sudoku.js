@@ -87,7 +87,7 @@ export function timeInHHMMSS(seconds) {
               days  = Math.floor(timeSecs / aDay),
               hours = Math.floor((timeSecs - days*aDay) / anHr),
               mins  = Math.floor((timeSecs - days*aDay - hours*anHr) / aMin),
-              secs  = Math.floor(timeSecs - days*aDay - hours*anHr - mins*aMin;
+              secs  = Math.floor(timeSecs - days*aDay - hours*anHr - mins*aMin);
 
         switch(type) {
             case 'days': time = days; break;

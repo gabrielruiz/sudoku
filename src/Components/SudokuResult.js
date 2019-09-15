@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {timeInHHMMSS} from '../Library/Sudoku';
 
 class SudokuResultTime extends Component {
 
@@ -9,7 +10,7 @@ class SudokuResultTime extends Component {
         return (
             <section className="sudoku-resultTime">
                 <h2>You Solved it!!</h2>
-                <h3>You solved the Sudoku in {elapsed} seconds</h3>
+                <h3>You solved the Sudoku in {timeInHHMMSS(elapsed)} seconds</h3>
                 <p>Challenge a Friend (or enemy) to solved it in less time: <a href={sudoku.shareURL} target="_blank" rel="noopener noreferrer">Share Link</a></p>
             </section>
         );

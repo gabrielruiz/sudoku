@@ -1,3 +1,7 @@
+html {
+  font-size: 2.5vw;
+}
+
 .App {
   text-align: center;
 }
@@ -69,4 +73,10 @@ footer {
 }
 footer a {
   color: #0000eec4;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }

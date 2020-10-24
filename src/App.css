@@ -23,6 +23,7 @@ html {
 
 .field {
   border-style: outset;
+  border-width: 1px;
   color: #888;
   font-size: 2rem;
   text-align: center;
@@ -32,18 +33,15 @@ html {
 .field[readonly] {
   color: #222;
 }
+.field[readonly]:focus {
+  outline: none;
+}
 
-.field:first-child {
-  border-left-color: #333; 
+.field:nth-child(3n+0):not(:last-child) {
+  border-right-width: 3px;
 }
-.field:nth-child(3n+0) {
-  border-right-color: #333; 
-}
-.row:first-child .field {
-  border-top-color: #333; 
-}
-.row:nth-child(3n+0) .field {
-  border-bottom-color: #333; 
+.row:nth-child(3n+0):not(:last-child) .field {
+  border-bottom-width: 3px;
 } 
 
 .sudoku-board {

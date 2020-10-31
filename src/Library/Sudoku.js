@@ -1,20 +1,42 @@
 import SudokuGenerator from 'sudoku';
 
+function _getSavedPuzzle() {
+    const puzzle = localStorage.getItem('puzzle');
+    return (puzzle) ? JSON.parse(atob(puzzle)) : null;
+}
+
+function _savePuzzle(puzzle) {
+    localStorage.setItem('puzzle', btoa(JSON.stringify(puzzle)));
+}
+
+export function removeSavedPuzzle() {
+    localStorage.removeItem('puzzle');
+}
+
 export function generateSudoku() {
     const fromURL = extractURLData(),
+          puzzleData = _getSavedPuzzle(),
           raw = (fromURL) ? fromURL.raw : SudokuGenerator.makepuzzle(),
-          rawSolution = SudokuGenerator.solvepuzzle(raw),
-          rawFormatted = raw.map((e) => (e === null ? null: e+1)),
-          rawSolutionFormatted = rawSolution.map((e) => e+1),
-          result = {
-            raw: raw,
-            rows: [],
-            solution: rawSolutionFormatted,
-            startTime: new Date(),
-            solvedTime: null,
-            challengerStartTime: (fromURL && fromURL.startTime) || null,
-            challengerSolvedTime: (fromURL && fromURL.solvedTime) || null
-          };
+          rawSolution = (puzzleData) ? SudokuGenerator.solvepuzzle(puzzleData.raw) : SudokuGenerator.solvepuzzle(raw),
+          rawFormatted = (puzzleData) ? puzzleData.raw.map((e) => (e === null ? null: e+1)) : raw.map((e) => (e === null ? null: e+1)),
+          rawSolutionFormatted = rawSolution.map((e) => e+1);
+
+    let puzzle = {
+        raw: raw,
+        rows: [],
+        solution: rawSolutionFormatted,
+        startTime: new Date(),
+        solvedTime: null,
+        challengerStartTime: (fromURL && fromURL.startTime) || null,
+        challengerSolvedTime: (fromURL && fromURL.solvedTime) || null
+    };
+    
+    if (!fromURL && puzzleData) {
+        puzzleData.startTime = new Date(puzzleData.startTime);
+        puzzle = puzzleData;
+    } else {
+        _savePuzzle(puzzle);
+    }
     
     for(let i = 0; i < 9; i++) {
         const row = {cols:[], index: i};
@@ -28,10 +50,11 @@ export function generateSudoku() {
                   };
             row.cols.push(col);
         }
-        result.rows.push(row);
+        puzzle.rows.push(row);
     }
-    return result;
-  }
+
+    return puzzle;
+}
 
 export function checkSolution(sudokuPuzzle) {
     const candidate = sudokuPuzzle.rows
@@ -47,6 +70,7 @@ export function checkSolution(sudokuPuzzle) {
 }
 
 export function shareURL(sudoku) {
+    sudoku = sudoku || _getSavedPuzzle();
     const data = {
             raw: sudoku.raw,
             startTime: sudoku.startTime,

@@ -13,7 +13,7 @@ class SudokuBoard extends Component {
         
         return (
             <section className={`sudoku-board${(isSolved) ? ' solved': ''}`}>
-                {puzzle.challengerStartTime && <SudokuChallenge 
+                {puzzle.challengerSolvedTime && <SudokuChallenge 
                     opponentSolvedTime={opponentSolvedTime(
                         puzzle.challengerStartTime,
                         puzzle.challengerSolvedTime

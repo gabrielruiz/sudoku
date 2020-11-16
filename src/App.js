@@ -47,7 +47,7 @@ class App extends Component{
   }
 
   showSudokuTitle() {
-    return (this.state.sudokuPuzzle.challengerStartTime) ? 'SUDOKU CHALLENGE!!!' : 'Suduko Game';
+    return (this.state.sudokuPuzzle.challengerStartTime) ? 'SUDOKU CHALLENGE!!!' : 'Sudoku Game';
   }
 
   render() {

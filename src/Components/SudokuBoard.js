@@ -19,8 +19,8 @@ class SudokuBoard extends Component {
                         puzzle.challengerSolvedTime
                     )}/>
                 }
-                {!isSolved && <SudokuTimer start={puzzle.startTime} isAChallenge={(puzzle.challengerStartTime)}/>}
                 {isSolved && <SudokuResult sudoku={puzzle}/>}
+                <SudokuTimer start={puzzle.startTime} isAChallenge={(puzzle.challengerStartTime)} isSolved={isSolved}/>
                 <div className="board-grid">
                     {puzzle.rows.map((row, i)=>(
                         <div key={row.index} className="row">

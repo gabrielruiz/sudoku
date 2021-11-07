@@ -23,7 +23,7 @@ class SudokuTimer extends Component {
 
     newSudoku() {
         removeSavedPuzzle();
-        window.location.href="/";
+        window.location.reload();
     }
 
     shareSudokuBoard() {

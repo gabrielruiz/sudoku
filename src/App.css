@@ -2,6 +2,26 @@ html {
   font-size: 2.5vw;
 }
 
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.message {
+  background-color: limegreen;
+  border-radius: 5px;
+  color: #fff;
+  line-height: 1.5;
+  margin-top: -1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: .5rem;
+  width: 30%;
+}
+
 .App {
   text-align: center;
 }
@@ -48,6 +68,40 @@ html {
   margin: 2rem;
 }
 
+.sudoku-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.new-sudoku-btn,
+.share-link-btn {
+  align-items: center;
+  display: flex;
+  margin-bottom: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: .5rem;
+}
+
+.icon:before {
+  content: '';
+  display: inline-block;
+  position: relative;
+}
+.icon-sudoku:before {
+  background-image: url('./Assets/Icons/sudoku-icon.svg');
+  background-size: cover;
+  width: 2rem;
+  height: 2rem;
+  margin-right: .5rem;
+}
+.icon-link:before {
+  background-image: url('./Assets/Icons/link.png');
+  background-size: cover;
+  width: 3rem;
+  height: 3rem;
+  margin-right: .5rem;
+}
 
 .sudoku-board.solved .field {
   border-color: lightgreen;

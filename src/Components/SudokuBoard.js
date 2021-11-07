@@ -13,14 +13,14 @@ class SudokuBoard extends Component {
         
         return (
             <section className={`sudoku-board${(isSolved) ? ' solved': ''}`}>
-                {puzzle.challengerStartTime && <SudokuChallenge 
+                {puzzle.challengerSolvedTime && <SudokuChallenge 
                     opponentSolvedTime={opponentSolvedTime(
                         puzzle.challengerStartTime,
                         puzzle.challengerSolvedTime
                     )}/>
                 }
-                {!isSolved && <SudokuTimer start={puzzle.startTime} isAChallenge={(puzzle.challengerStartTime)}/>}
                 {isSolved && <SudokuResult sudoku={puzzle}/>}
+                <SudokuTimer start={puzzle.startTime} isAChallenge={(puzzle.challengerStartTime)} isSolved={isSolved}/>
                 <div className="board-grid">
                     {puzzle.rows.map((row, i)=>(
                         <div key={row.index} className="row">

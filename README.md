@@ -80,6 +80,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ## Releases:
 
++ **1.1.1**: 
+  - Fixing issue in Github page once it's deployed, related to refresh the page once New Sudoku Board button is clicked.
+
++ **1.1.0**: 
+  - Keep the game saved locally once the game is loaded to avoid change to a new one once the page is refreshed.
+  - Show the challenge link by default without wait to complete the game to see it (To start a challange with a friend at the same time).
 + **1.0.0**: 
   - Sudoku game structure with a level medium of difficulty for the gamer as default.
   - Share the Sudoku game once it's completed by a link to challenge with a friend.
@@ -88,10 +94,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ## Future Features:
 
-+ **1.1.0**: 
-  - Keep the game saved locally once the game is loaded to avoid change to a new one once the page is refreshed.
-  - Show the challenge link by default without wait to complete the game to see it (To start a challange with a friend at the same time).
-   
 + **1.2.0**: 
   - Add a select box to change the game level between easy, medium and expert.
   - Adding a button to pause the timer, pausing the game at the same time and then play again continuing the time counter.

@@ -83,7 +83,7 @@ button {
 } 
 
 .sudoku-board {
-  margin: 2rem;
+  margin: 1.35rem;
 }
 
 .sudoku-actions {
@@ -143,6 +143,12 @@ footer {
 }
 footer a {
   color: #0000eec4;
+}
+
+@media (max-width: 375px) {
+  .sudoku-board {
+    margin: 2rem;
+  }
 }
 
 @media (min-width: 768px) {

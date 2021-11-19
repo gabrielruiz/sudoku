@@ -145,7 +145,7 @@ footer a {
   color: #0000eec4;
 }
 
-@media (max-width: 375px) {
+@media (min-width: 375px) {
   .sudoku-board {
     margin: 2rem;
   }
